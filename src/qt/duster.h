@@ -28,9 +28,9 @@ class DustingGui : public QDialog
 	Q_OBJECT
 
 public:
-    static CCoinControl *coinControl;
 
 	DustingGui(const PlatformStyle*, QWidget *parent = 0);
+	~DustingGui();
 	void setModel(WalletModel *model);
 
 private Q_SLOTS:
@@ -52,8 +52,13 @@ private:
 	QLabel *infoLabel;
 	QPushButton *refreshButton;
 	QPushButton *dustButton;
-	int blockDivisor;
-	int minimumBlockAmount;
+	bool userClosed;
+	int maxNumTX;
+	int minimumBlocks;
+	int64_t defaultFee;
+	int64_t minAmtInput;
+	int64_t maxAmtInput;
+
     enum
     {
         COLUMN_AMOUNT,
